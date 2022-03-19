@@ -1,0 +1,37 @@
+.btMenu{
+	/*background-color:grey;*/
+	font-size:1em;
+	width:30%;
+	display:block;
+	margin:auto;
+}
+
+h1{
+	margin-bottom:5%;
+	text-align:center;
+}
+
+.btEnvia{
+	background-color:lightgreen;
+	color:darkgreen;
+	font-size:1.3em;
+}
+
+form{
+	text-align:center;
+}
+
+form > input{
+	display:block;
+	margin:auto;
+}
+
+form > .ocult{
+	display:none;
+}
+
+form > label{
+	text-align:center;
+	width:100%;
+	background-color:red;
+}
