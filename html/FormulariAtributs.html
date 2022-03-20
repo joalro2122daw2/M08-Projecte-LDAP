@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/estils.css" type="text/css">
+<title>Atributs a modificar</title>
+<h1>Escollir atribut a modificar</h1>
+</head>
+<body>
+<form action="http://localhost:80/projecte/php/encaminador.php" method="POST">
+	<input class="ocult" type="text" name="metode" value="canviarAtribut" hidden/>
+	<div id="divradio">
+	  <div class="radiobt">
+		<input  type="radio" id="rbUid" value="uidNumber" name="att"/>
+		<label  for="rbIid">uidNumber</label>
+	  </div>
+	  <div class="radiobt">
+	  	<input  type="radio" id="rbGid" value="gidNumber" name="att"/>
+		<label  for="rbGid">gidNumber</label>
+	  </div>
+	  <div class="radiobt">
+		<input  type="radio" id="rbDirectori" value="directori" name="att"/>
+		<label  for="rbDirectori">Directori personal</label>
+	  </div>
+	  <div class="radiobt">
+		<input  type="radio" id="rbShell" value="shell" name="att"/>
+		<label  for="rbShell">Shell</label>
+	  </div>
+	  <div class="radiobt">
+		<input  type="radio" id="rbCn" value="cn" name="att"/>
+		<label  for="rbCn">cn</label>
+	  </div>
+	  <div class="radiobt">
+		<input  type="radio" id="rbSn" value="sn" name="att"/>
+		<label  for="rbSn">sn</label>
+	  </div>
+	  <div class="radiobt">
+		<input  type="radio" id="rbGivenName" value="givenname" name="att"/>
+		<label  for="rbGivenName">givenName</label>
+	  </div>
+	  <div class="radiobt">
+		<input  type="radio" id="rbPostalAdd" value="postal" name="att"/>
+		<label  for="rbPostalAdd">postalAddress</label>
+	  </div>
+	  <div class="radiobt">
+		<input  type="radio" id="rbMobile" value="mobile" name="att"/>
+		<label  for="rbMobile">mobile</label>
+	  </div>
+	  <div class="radiobt">
+		<input  type="radio" id="rbTel" value="tel" name="att"/>
+		<label  for="rbTel">telephoneNumber</label>
+	  </div>
+	  <div class="radiobt">
+		<input  type="radio" id="rbTitle" value="title" name="att"/>
+		<label  for="rbTitle">title</label>
+	  </div>
+	  <div class="radiobt">
+		<input  type="radio" id="rbDescription" value="description" name="att"/>
+		<label  for="rbDescription">description</label>
+	  </div>
+	</div>
+	<input class="btEnvia" type="submit" value="Envia">
+	</form>
+</body>
+</html>

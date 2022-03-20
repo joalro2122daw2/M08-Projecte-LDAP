@@ -21,14 +21,21 @@ class GestorLdap{
         $entrada ='uid='.$uid.',ou='.$ou.',dc=fjeclot,dc=net';
         //echo $entrada;
         $usuari=$ldap->getEntry( $entrada);
-        //echo "<b><u>".$usuari["dn"]."</b></u><br>";
+        //echo "<b><u>".$usuari["dn"]."</b></u><br>";        
         echo '<h1>Dades del usuari</h1><br>';
         foreach ($usuari as $atribut => $dada) {
             if ($atribut != "dn") echo $atribut.": ".$dada[0].'<br>';
         }
+        return $usuari;
     }
     
-}
+    static function mostrarAtributsPerAModificar($uid,$ou)
+    {
+        require('../html/FormulariAtributs.html');
+    }
+    
+    
+}//Fi de la classe
 
 
 

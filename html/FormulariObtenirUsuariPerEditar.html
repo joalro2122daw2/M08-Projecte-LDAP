@@ -4,11 +4,11 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../css/estils.css" type="text/css">
 	<title>Insert title here</title>
-	<h1 id="titol">Obtenir dades d'usuari</h1>
+	<h1 id="titol">Editar dades d'usuari</h1>
 </head>
 <body>
 	<form action="http://localhost:80/projecte/php/encaminador.php" method="POST">
-		<input class="ocult" type="text" name="metode" value="usuari" hidden/>
+		<input class="ocult" type="text" name="metode" value="editarUsuari" hidden/>
 		Identificador del usuari (uid): <input id="uid" type="text" name="uid" autofocus><br>
 		Unitat organizativa (ou): <input id="ou" type="text" name="ou">
 		<input class="btEnvia" type="submit" value="Envia">
