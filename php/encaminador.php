@@ -12,6 +12,14 @@ if(isset($_POST["metode"]))
         case "editarUsuari":
             GestorLdap::mostrarAtributsPerAModificar($_POST["uid"],$_POST["ou"]);
             break;
+        case "canviarAtribut":
+            if(!empty($_POST['radio'])) {
+                //echo '  ' . $_POST['radio'];
+                GestorLdap::canviarAtribut($_POST["radio"]);
+            } else {
+                echo 'Si us plau seleccioneu una opció.';
+            }            
+            break;
     }
 }
 
