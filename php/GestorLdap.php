@@ -55,34 +55,39 @@ class GestorLdap{
         //echo("  Ou:".$_COOKIE['useruid']." Param: ". $param);
         $uid = $_COOKIE['useruid'];
         echo(
-        "<form action='http://localhost:80/projecte/php/encaminador.php' method='POST'>".
-            "<input class='ocult' type='text' name='metode' value='dadesAtribut' hidden/>".
-            "Nou valor ($uid): <input id='tbNouvalor' type='text' name='tbNouvalor autofocus><br>".        
-            "<input class='btEnvia' type='submit' value='Envia'>
+        "
+        <link rel='stylesheet' href='../css/estils.css' type='text/css'>
+        <h1>Canvi del parametre $param</h1>
+        <form action='http://localhost:80/projecte/php/encaminador.php' method='POST'>
+            <input class='ocult' type='text' name='put' value='dadesAtribut' hidden/>
+            <input class='ocult' type='text' name='param' value='$param' hidden/>
+            Nou valor per a $uid : <input id='tbNouvalor' type='text' name='tbNouvalor' autofocus/>  
+            <input class='btEnvia' type='submit' value='Envia'/>               
         </form>");
+    }
         
         
-        
-        
+        static function canviarDadaUsuari($param,$valor)
+        {
+            //echo("  uid:".$_COOKIE['useruid']." Param: ". $param . "  Valor: " .$valor);
         //echo("<h1 style='text-align:center;'>Canvi de valor d'atribut d'usuari</h1>");
         //echo("<label style='width:100%;text-align:center;display:block' id='lbuid'>Nou valor per a: $param  de l'usuari: $uid </label>");
-        /*
+        
         ini_set('display_errors', 0);
         #
-        # Atribut a modificar --> Número d'idenficador d'usuari
+        # Atribut a modificar --> $param
         #
-        $atribut= $_COOKIE['useruid'];
-        $nou_contingut=6000;
+        
         #
         # Entrada a modificar
         #
-        $uid = 'usr2';
+        $uid= $_COOKIE['useruid'];
         $unorg = 'usuaris';
         $dn = 'uid='.$uid.',ou='.$unorg.',dc=fjeclot,dc=net';
         #
         #Opcions de la connexió al servidor i base de dades LDAP
         $opcions = [
-            'host' => 'zend-dacomo.fjeclot.net',
+            'host' => 'zend-joalro.fjeclot.net',
             'username' => 'cn=admin,dc=fjeclot,dc=net',
             'password' => 'fjeclot',
             'bindRequiresDn' => true,
@@ -96,11 +101,12 @@ class GestorLdap{
         $ldap->bind();
         $entrada = $ldap->getEntry($dn);
         if ($entrada){
-            Attribute::setAttribute($entrada,$atribut,$nou_contingut);
+            Attribute::setAttribute($entrada,$param,$valor);
             $ldap->update($dn, $entrada);
             echo "Atribut modificat";
+            GestorLdap::mostrarDadesUsuari($uid,$unorg);
         } else echo "<b>Aquesta entrada no existeix</b><br><br>";	
-        */
+        
     }
 }//Fi de la classe
 

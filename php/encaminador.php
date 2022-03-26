@@ -2,10 +2,10 @@
 require_once("GestorLdap.php");
 
 
-if(isset($_POST["metode"]))
+if(isset($_POST["post"]))
 {
 
-    switch ($_POST["metode"]){
+    switch ($_POST["post"]){
         case "usuari":
             GestorLdap::mostrarDadesUsuari($_POST["uid"],$_POST["ou"],true);
             break;
@@ -24,9 +24,9 @@ if(isset($_POST["metode"]))
 }
 
 
-if(isset($_GET["metode"]))
+if(isset($_GET["get"]))
 {
-    switch ($_GET["metode"]){
+    switch ($_GET["get"]){
         case "mostraFormulariDadesUsuari":       
             require("../html/FormulariObtenirUsuari.html");
             break;
@@ -36,9 +36,27 @@ if(isset($_GET["metode"]))
     }
 }
 
+if(isset($_POST["put"]))
+{
+    switch ($_POST["put"]){
+        case "dadesAtribut":
+            GestorLdap::canviarDadaUsuari($_POST["param"],$_POST["tbNouvalor"]);
+            break;
+    }
+}
 
+/*
+if(isset($_PUT["metode"]))
+{
+    switch ($_PUT["metode"]){
+        case "dadesAtribut":
+            GestorLdap::mostrarDadesUsuari($_PUT["tbNouvalor"]);
+            break;
+        
+    }
+}
 
-
+*/
 
 
 
