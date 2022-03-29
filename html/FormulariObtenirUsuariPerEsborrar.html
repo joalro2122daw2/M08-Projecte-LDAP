@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/estils.css" type="text/css">
+<title>Insert title here</title>
+<h1 id="titol">Esborrar usuari</h1>
+</head>
+<body>
+<form action="http://localhost:80/projecte/php/encaminador.php" method="POST">
+		<input class="ocult" type="text" name="delete" value="esborrarUsuari" hidden/>
+		Identificador del usuari (uid): <input id="uid" type="text" name="uid" autofocus><br>
+		Unitat organizativa (ou): <input id="ou" type="text" name="ou">
+		<input class="btEnvia" type="submit" value="Envia">
+	</form>
+</body>
+</html>

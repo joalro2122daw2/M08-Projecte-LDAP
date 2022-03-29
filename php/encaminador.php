@@ -1,7 +1,7 @@
 <?php 
 require_once("GestorLdap.php");
 
-
+/* POSTS */
 if(isset($_POST["post"]))
 {
 
@@ -23,7 +23,7 @@ if(isset($_POST["post"]))
     }
 }
 
-
+/* GETS */
 if(isset($_GET["get"]))
 {
     switch ($_GET["get"]){
@@ -35,6 +35,9 @@ if(isset($_GET["get"]))
             break;
         case "mostraFormulariCrearUsuari":
             require("../html/FormulariCrearUsuari.html");
+            break;
+        case "mostraFormulariEsborrarUsuari":
+            require("../html/FormulariObtenirUsuariPerEsborrar.html");
             break;
     }
 }
@@ -52,6 +55,16 @@ if(isset($_POST["put"]))
             $_POST["uidNumber"],$_POST["description"],$_POST["loginshell"],$_POST["mobile"]);
             break;
         }
+}
+
+/* DELETES */
+if(isset($_POST["delete"]))
+{
+    switch($_POST["delete"]){
+        case "esborrarUsuari":
+            GestorLdap::esborrarUsuari($_POST["ou"],$_POST["uid"]);
+            break;
+    }
 }
 
 
