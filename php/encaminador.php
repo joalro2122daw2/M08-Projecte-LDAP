@@ -33,30 +33,28 @@ if(isset($_GET["get"]))
         case "mostraFormulariEditarUsuari":
             require("../html/FormulariObtenirUsuariPerEditar.html");
             break;
+        case "mostraFormulariCrearUsuari":
+            require("../html/FormulariCrearUsuari.html");
+            break;
     }
 }
 
+/* PUTS */
 if(isset($_POST["put"]))
 {
     switch ($_POST["put"]){
         case "dadesAtribut":
             GestorLdap::canviarDadaUsuari($_POST["param"],$_POST["tbNouvalor"]);
             break;
-    }
-}
-
-/*
-if(isset($_PUT["metode"]))
-{
-    switch ($_PUT["metode"]){
-        case "dadesAtribut":
-            GestorLdap::mostrarDadesUsuari($_PUT["tbNouvalor"]);
+        case "crearUsuari":
+            GestorLdap::crearUsuari($_POST["ou"],$_POST["uid"],$_POST["cn"],$_POST["gid"],$_POST["homedirectory"],
+            $_POST["givenname"],$_POST["sn"],$_POST["postaladdress"],$_POST["telephonenumber"],$_POST["title"],
+            $_POST["uidNumber"],$_POST["description"],$_POST["loginshell"],$_POST["mobile"]);
             break;
-        
-    }
+        }
 }
 
-*/
+
 
 
 

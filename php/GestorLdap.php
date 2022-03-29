@@ -46,7 +46,8 @@ class GestorLdap{
     {
         //echo "<label id='lbuid'>'$uid'</label>";
         //echo "<label id='lbou'>'$ou'</label>";
-        setcookie('useruid',$uid);        
+        setcookie('useruid',$uid);       
+        setcookie('userou',$ou);
         require('../html/FormulariAtributs.html');
     }
     
@@ -82,7 +83,7 @@ class GestorLdap{
         # Entrada a modificar
         #
         $uid= $_COOKIE['useruid'];
-        $unorg = 'usuaris';
+        $unorg = $_COOKIE['userou'];
         $dn = 'uid='.$uid.',ou='.$unorg.',dc=fjeclot,dc=net';
         #
         #Opcions de la connexió al servidor i base de dades LDAP
@@ -95,7 +96,7 @@ class GestorLdap{
             'baseDn' => 'dc=fjeclot,dc=net',
         ];
         #
-        # Modificant l'entrada
+        # Modificant l'entrada 
         #
         $ldap = new Ldap($opcions);
         $ldap->bind();
@@ -108,6 +109,49 @@ class GestorLdap{
         } else echo "<b>Aquesta entrada no existeix</b><br><br>";	
         
     }
+    
+    static function crearUsuari($ou,$uid,$cn,$gid,$homedirectory,$givenname,$sn,$postaladdress
+        ,$telephonenumber,$title,$uidNumber,$description,$loginshell,$mobile)
+        {
+         //echo" $ou   $uid  $cn  $gid  $homedirectory  $givenname  $sn $postaladdress  $telephonenumber  $title  $uidNumber  $description  $loginshell  $mobile";        
+         
+         ini_set('display_errors', 0);
+         $objcl=array('inetOrgPerson','organizationalPerson','person','posixAccount','shadowAccount','top');
+         #
+         #Afegint la nova entrada
+         $domini = 'dc=fjeclot,dc=net';
+         $opcions = [
+             'host' => 'zend-joalro.fjeclot.net',
+             'username' => 'cn=admin,dc=fjeclot,dc=net',
+             'password' => 'fjeclot',
+             'bindRequiresDn' => true,
+             'accountDomainName' => 'fjeclot.net',
+             'baseDn' => 'dc=fjeclot,dc=net',
+         ];
+         //--
+         $ldap = new Ldap($opcions);
+         $ldap->bind();
+         $nova_entrada = [];
+         Attribute::setAttribute($nova_entrada, 'objectClass', $objcl);
+         Attribute::setAttribute($nova_entrada, 'ou', $ou);
+         Attribute::setAttribute($nova_entrada, 'uid', $uid);
+         Attribute::setAttribute($nova_entrada, 'uidNumber', $uidNumber);
+         Attribute::setAttribute($nova_entrada, 'gidNumber', $gid);
+         Attribute::setAttribute($nova_entrada, 'homeDirectory', $homedirectory);
+         Attribute::setAttribute($nova_entrada, 'loginShell', $loginshell);
+         Attribute::setAttribute($nova_entrada, 'cn', $cn);
+         Attribute::setAttribute($nova_entrada, 'sn', $sn);
+         Attribute::setAttribute($nova_entrada, 'givenName', $givenname);
+         Attribute::setAttribute($nova_entrada, 'mobile', $mobile);
+         Attribute::setAttribute($nova_entrada, 'postalAddress', $postaladdress);
+         Attribute::setAttribute($nova_entrada, 'telephoneNumber', $telephonenumber);
+         Attribute::setAttribute($nova_entrada, 'title', $title);
+         Attribute::setAttribute($nova_entrada, 'description', $description);
+         $dn = 'uid='.$uid.',ou='.$ou.',dc=fjeclot,dc=net';
+         if($ldap->add($dn, $nova_entrada)) echo "Usuari creat";
+         else echo "Error";
+        } 
+                
 }//Fi de la classe
 
 

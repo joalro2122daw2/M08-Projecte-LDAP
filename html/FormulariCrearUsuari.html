@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/estils.css" type="text/css">
+<title>Crear usuari</title>
+</head>
+<body>
+	<h1>Afegir nou usuari</h1>
+	<form action="http://localhost:80/projecte/php/encaminador.php" method="POST">
+		<input class="ocult" type="text" name="put" value="crearUsuari" hidden/>
+		 Unitat organizativa (ou): <input id="ou" type="text" name="ou" autofocus><br>
+		 Identificador del usuari (uid):<input id="uid" type="text" name="uid">
+		 Nom i cognoms (cn):<input id="cn" type="text" name="cn">
+		 Nombre de grup (gid):<input id="gid" type="number" name="gid">
+		 Home directory (homeDirectory):<input id="homedirectory" type="text" name="homedirectory">
+		 Nom (givenName):<input id="givenname" type="text" name="givenname">
+		 Cognom (sn):<input id="sn" type="text" name="sn">
+		 Direcció (postalAddress):<input id="postaladdress" type="text" name="postaladdress">
+		 Telèfon mobil (mobile):<input id="mobile" type="text" name="mobile">
+		 Telèfon fix (telephoneNumber):<input id="telephonenumber" type="text" name="telephonenumber">
+		 Titol (title):<input id="title" type="text" name="title">		 
+		 Nombre d'usuari (uidNumber):<input id="uidNumber" type="number" name="uidNumber">
+		 Descripció (description):<input id="description" type="text" name="description">
+		 Shell (loginShell):<input id="loginshell" type="text" name="loginshell">
+		 
+		<input class="btEnvia" type="submit" value="Envia">
+		
+	</form>
+</body>
+</html>
