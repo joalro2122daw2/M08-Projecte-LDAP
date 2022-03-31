@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package xmlns="http://www.zend.com/server/deployment-descriptor/1.0" version="1.0">
+    <name>projecte</name>
+    <version>
+    <release>6.0.0</release>
+        </version>
+    </package>
